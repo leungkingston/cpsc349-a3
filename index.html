@@ -7,14 +7,63 @@
     </head>
     <body>
         <div class="background">
-            <button class="num">7</button>
-            <button class="num">8</button>
-            <button class="num">9</button>
-            <button class="op">+</button>
-            <button class="num">5</button>
-            <button class="num">6</button>
-            <button class="num">7</button>
+            <textarea id="textbox" type="text"></textarea>
+            <button onClick="changeNum(7)"class="num">7</button>
+            <button onClick="changeNum(8)"class="num">8</button>
+            <button onClick="changeNum(9)"class="num">9</button>
+            <button onClick="doOp('+')"class="op">+</button>
+            <button onClick="changeNum(4)"class="num">4</button>
+            <button onClick="changeNum(5)"class="num">5</button>
+            <button onClick="changeNum(6)"class="num">6</button>
             <button class="op">-</button>
+            <button onClick="changeNum(1)"class="num">1</button>
+            <button onClick="changeNum(2)"class="num">2</button>
+            <button onClick="changeNum(3)"class="num">3</button>
+            <button class="op">x</button>
+            <button onClick="clearf()"class="clear">C</button>
+            <button onClick="changeNum(0)"class="num">0</button>
+            <button class="op">=</button>
+            <button class="op">/</button>
         </div>
+        <script>
+            var opBool = false;
+            var plusBool = false;
+            var minusBool = false;
+            var multBool = false;
+            var divBool = false;
+            function clearf(){
+                const text = document.getElementById('textbox');
+                text.value = "";
+                //reset bools
+                var opBool = false;
+                var plusBool = false;
+                var minusBool = false;
+                var multBool = false;
+                var divBool = false;
+            }
+            function changeNum(num){
+                const text = document.getElementById('textbox');
+                text.value += num;
+            }
+            function doOp(operator){
+                const text = document.getElementById('textbox');
+                if (!opBool){
+                    opBool=true;
+                    text.value += operator;
+                    if (operator=='+'){
+                        plusBool = true;
+                    }
+                    else if(operator=='-'){
+                        minusBool = true;
+                    }
+                    else if(operator=='x'){
+                        multBool = true;
+                    }
+                    else if(operator=='/'){
+                        divBool = true;
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
